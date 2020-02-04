@@ -3,7 +3,7 @@ close all
 clc
 
 
-RGB = imread('test.JPG');
+RGB = imread('nulla.JPG');
 
 %figure
 %imshow(RGB);
@@ -31,11 +31,44 @@ L = YCBCR(:,:,1);
 Lavg = mean(L(:));
 Lmax = max(L(:));
 
-Rmwsf = Lmax / Rmax;
-Gmwsf = Lmax / Gmax;
-Bmwsf = Lmax / Bmax;
+Rmwsf = double(Lmax) / double(Rmax);
+Gmwsf = double(Lmax) / double(Gmax);
+Bmwsf = double(Lmax) / double(Bmax);
 
 
 Rawsf = Lavg / Ravg;
 Gawsf = Lavg / Gavg;
 Bawsf = Lavg / Bavg;
+
+
+if(Rawsf > Gawsf && Rawsf > Bawsf)
+    Gfac = Gmwsf / Rmwsf;
+    Bfac = Bmwsf / Rmwsf;
+    CCF = (Gfac + Bfac) / 2;
+end
+
+if(Gawsf > Rawsf && Gawsf > Bawsf)
+    Rfac = Rmwsf / Gmwsf;
+    Bfac = Bmwsf / Gmwsf;
+    CCF = (Rfac + Bfac) / 2;
+end
+
+if(Bawsf > Rawsf && Bawsf > Gawsf)
+    Rfac = Rmwsf / Bmwsf;
+    Gfac = Gmwsf / Bmwsf;
+    CCF = (Rfac + Gfac) / 2;
+end
+
+Rgf = CCF * Rawsf * Rmwsf;
+Ggf = CCF * Gawsf * Gmwsf;
+Bgf = CCF * Bawsf * Bmwsf;
+
+RedNew = Red * Rgf;
+GreenNew = Green * Ggf;
+BluNew = Blu * Bgf;
+
+RGBNuova = cat(3, RedNew, GreenNew, BluNew);
+
+figure
+imshow(RGBNuova);
+title('Final result');
