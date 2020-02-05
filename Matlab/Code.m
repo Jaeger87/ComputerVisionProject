@@ -2,8 +2,8 @@ clear all
 close all
 clc
 
-
-RGB = imread('nulla.JPG');
+imgName = 'nulla.JPG';
+RGB = imread(imgName);
 
 %figure
 %imshow(RGB);
@@ -72,3 +72,5 @@ RGBNuova = cat(3, RedNew, GreenNew, BluNew);
 figure
 imshow(RGBNuova);
 title('Final result');
+
+imwrite(RGBNuova,imgName + "Indiani.png");
