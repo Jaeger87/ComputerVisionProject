@@ -2,7 +2,7 @@ clear all
 close all
 clc
 
-imgName = 'pesce.JPG';
+imgName = 'celeste.JPG';
 
 RGB = imread(imgName);
 
@@ -23,18 +23,16 @@ Bavg = mean(Blu(:));
 counterMod = 1;
 while Ravg < min([Bavg, Gavg]) 
     Red = Red + 1;
-    if(mod(counterMod, 8) == 0) 
-        Green = Green + 1;
-        Blu = Blu + 1;
+    if(mod(counterMod, 3) == 0) 
+    Green = Green + 1;
+    Blu = Blu + 1;
     end
     Ravg = mean(Red(:));
     Gavg = mean(Green(:));
     Bavg = mean(Blu(:));
-    counterMod = counterMod +1;
+    disp(Gavg);
     disp('aumento rosso');
 end
-
-
 Rmax = max(Red(:));
 Gmax = max(Green(:));
 Bmax = max(Blu(:));
@@ -94,21 +92,17 @@ RedNew = Red * Rgf;
 GreenNew = Green * Ggf;
 BluNew = Blu * Bgf;
 
-Ravg = mean(RedNew(:));
-Gavg = mean(GreenNew(:));
-Bavg = mean(BluNew(:));
-counterMod = 1;
-while Ravg > mean([Bavg, Gavg]) - 10 
-    RedNew = RedNew - 3;
-    if(mod(counterMod, 2) == 0) 
-        GreenNew = GreenNew - 4;
-        BluNew = BluNew - 4;
-    end
-    Ravg = mean(RedNew(:));
-    Gavg = mean(GreenNew(:));
-    Bavg = mean(BluNew(:));
-    counterMod = counterMod + 1;
-    disp('tolgo rosso');
+Ravg = mean(Red(:));
+Gavg = mean(Green(:));
+Bavg = mean(Blu(:));
+while Ravg > min([Bavg, Gavg]) 
+    Red = Red - 2;
+    Green = Green - 0.1;
+    Blu = Blu - 0.1;
+    Ravg = mean(Red(:));
+    Gavg = mean(Green(:));
+    Bavg = mean(Blu(:));
+    disp('ok')
 end
 
 RGBNuova = cat(3, RedNew, GreenNew, BluNew);
