@@ -2,7 +2,7 @@ clear all
 close all
 clc
 
-imgName = 'pompei.JPG';
+imgName = 'fondpesc.JPG';
 
 RGB = imread(imgName);
 

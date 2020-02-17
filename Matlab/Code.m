@@ -2,7 +2,7 @@ clear all
 close all
 clc
 
-imgName = 'nulla.JPG';
+imgName = 'fondpesc.JPG';
 RGB = imread(imgName);
 
 %figure
