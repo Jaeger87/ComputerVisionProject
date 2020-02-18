@@ -4,10 +4,12 @@ Problema segnale sott'acqua
 ---Trovare articoli/paper che lo dicono
 
 
+
 Problemi sott'acqua:
 
 ---Contrasto, nominare qui quanti algoritmi funzionano sul contrasto.
 
+---Perdita del colore Rosso
 
 implementazione
 
