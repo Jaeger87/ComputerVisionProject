@@ -5,3 +5,7 @@ https://www.focus.it/tecnologia/innovazione/come-fa-un-sottomarino-a-comunicare-
 
 
 https://it.mathworks.com/help/images/ref/rgb2ycbcr.html
+
+https://li-chongyi.github.io/proj_benchmark.html
+
+http://irvlab.dl.umn.edu/enhancing-underwater-imagery-using-generative-adversarial-networks
